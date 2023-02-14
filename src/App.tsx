@@ -18,7 +18,7 @@ const App = () => {
     if (!userId) {
       navigate("/login");
     }
-    if(userId){
+    if (userId) {
       navigate("/profile")
     }
   }, []);
@@ -42,9 +42,9 @@ const App = () => {
             )
           }
         />
+        <Route path="*" element={<LoginPage />} />
       </Routes>
-      <Route path="*" element={<LoginPage/>}/>
-      <MyToast/>
+      <MyToast />
     </>
   );
 };
