@@ -15,9 +15,6 @@ const App = () => {
   const { userInfo } = logIn;
   const { userId } = userInfo
   useEffect(() => {
-    if (!userId) {
-      navigate("/login");
-    }
     if (userId) {
       navigate("/profile")
     }
@@ -27,21 +24,9 @@ const App = () => {
       <Routes>
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignUpPage />} />
-        <Route
-          path="/profile"
-          element={userId ? <ProfilePage /> : <h1>Unauthorized User</h1>}
-        />
-        <Route path="/explore" element={<Explore />} />
-        <Route
-          path="/create"
-          element={
-            userId ? (
-              <Create_Blog userInfo={userInfo} />
-            ) : (
-              <h1>Unauthorized User</h1>
-            )
-          }
-        />
+        <Route path="/profile" element={userId ? <ProfilePage /> : <h1>Unauthorized User</h1>} />
+        <Route path="/explore" element={userId ? <Explore /> : <h1>Unauthorized User</h1>} />
+        <Route path="/create" element={userId ? <Create_Blog userInfo={userInfo} /> : <h1>Unauthorized User</h1>} />
         <Route path="*" element={<LoginPage />} />
       </Routes>
       <MyToast />
