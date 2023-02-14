@@ -77,7 +77,7 @@ const AuthContextProvider = ({ children }: { children: React.ReactNode }) => {
         logIn: {
           processing: processing,
           Log_In_Handler: Log_In_Handler,
-          userInfo:JSON.parse(window.localStorage.getItem("userInfo")!),
+          userInfo:JSON.parse(window.localStorage.getItem("userInfo")!) ? JSON.parse(window.localStorage.getItem("userInfo")!) : {userId: "", name: "", blogs: [] },
         },
         LOGOUT: LOGOUT,
       }}
