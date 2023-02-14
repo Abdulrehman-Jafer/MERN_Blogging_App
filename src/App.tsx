@@ -43,6 +43,7 @@ const App = () => {
           }
         />
       </Routes>
+      <Route path="*" element={<LoginPage/>}/>
       <MyToast/>
     </>
   );
