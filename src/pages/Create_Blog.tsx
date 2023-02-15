@@ -6,7 +6,6 @@ import axios from "axios";
 import MY_NAV from "./components/MyNav";
 import { ofuserInfo } from "../Context/ContextTypes";
 import { FormEvent,ChangeEvent } from "react";
-// import { notify } from "../Globals/Globals";
 import { toast } from "react-toastify";
 
 const Create_Blog = ({ userInfo }:{userInfo:ofuserInfo}) => {
