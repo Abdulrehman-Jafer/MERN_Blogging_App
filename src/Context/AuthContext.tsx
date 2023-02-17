@@ -17,7 +17,7 @@ const AuthContextProvider = ({ children }: { children: React.ReactNode }) => {
   const [userInfo, setUserInfo] = useState({ userId: "", name: "", blogs: [] });
   const navigate = useNavigate();
   const Sign_Up_Handler: ofSign_Up_Handler = async (event, signUpInfo, setSignUpInfo) => {
-    alert("This wont work because I am unable to upload my Api on free domain!")
+    toast.error("This wont work because I am unable to upload my Api on free domain!")
     setProcessing(true);
     event.preventDefault();
     await axios
@@ -37,7 +37,7 @@ const AuthContextProvider = ({ children }: { children: React.ReactNode }) => {
   };
   const Log_In_Handler: ofLog_In_Handler = async (event, loginInfo) => {
     event.preventDefault();
-    alert("This wont work because I am unable to upload my Api on free domain!")
+    toast.error("This wont work because I am unable to upload my Api on free domain!")
     setProcessing(true);
     await axios
       .post(LOGIN_URL_API, loginInfo)
