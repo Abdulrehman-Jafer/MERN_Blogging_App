@@ -1,9 +1,9 @@
-import React,{Dispatch} from "react";
+import React, { Dispatch } from "react";
 import { createContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { SIGN_UP_URL_API, LOGIN_URL_API } from "../Globals/Globals";
 import axios from "axios";
-import {Provider,ofSign_Up_Handler,ofLog_In_Handler } from "./ContextTypes"
+import { Provider, ofSign_Up_Handler, ofLog_In_Handler } from "./ContextTypes"
 // import { notify } from "../Globals/Globals";
 import { toast } from 'react-toastify';
 
@@ -16,7 +16,8 @@ const AuthContextProvider = ({ children }: { children: React.ReactNode }) => {
   const [processing, setProcessing] = useState(false);
   const [userInfo, setUserInfo] = useState({ userId: "", name: "", blogs: [] });
   const navigate = useNavigate();
-  const Sign_Up_Handler:ofSign_Up_Handler = async (event, signUpInfo, setSignUpInfo) => {
+  const Sign_Up_Handler: ofSign_Up_Handler = async (event, signUpInfo, setSignUpInfo) => {
+    alert("This wont work because I am unable to upload my Api on free domain!")
     setProcessing(true);
     event.preventDefault();
     await axios
@@ -34,8 +35,9 @@ const AuthContextProvider = ({ children }: { children: React.ReactNode }) => {
         }
       });
   };
-  const Log_In_Handler:ofLog_In_Handler = async (event, loginInfo) => {
+  const Log_In_Handler: ofLog_In_Handler = async (event, loginInfo) => {
     event.preventDefault();
+    alert("This wont work because I am unable to upload my Api on free domain!")
     setProcessing(true);
     await axios
       .post(LOGIN_URL_API, loginInfo)
@@ -77,7 +79,7 @@ const AuthContextProvider = ({ children }: { children: React.ReactNode }) => {
         logIn: {
           processing: processing,
           Log_In_Handler: Log_In_Handler,
-          userInfo:JSON.parse(window.localStorage.getItem("userInfo")!) ? JSON.parse(window.localStorage.getItem("userInfo")!) : {userId: "", name: "", blogs: [] },
+          userInfo: JSON.parse(window.localStorage.getItem("userInfo")!) ? JSON.parse(window.localStorage.getItem("userInfo")!) : { userId: "", name: "", blogs: [] },
         },
         LOGOUT: LOGOUT,
       }}
