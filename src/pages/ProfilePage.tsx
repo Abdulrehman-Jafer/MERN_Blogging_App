@@ -57,6 +57,7 @@ const ProfilePage = () => {
           setClassName("hidden");
           toast.success("Successful")
           setCount(old => old + 1)
+          window.scroll(0,0)
         }
       })
       .catch((err) => {
@@ -72,6 +73,7 @@ const ProfilePage = () => {
         if (res.status === 200) {
           toast.error("Deleted Successfully");
           setCount((old) => old + 1);
+          window.scroll(0,0)
         }
       })
       .catch((err) => console.log(err));
