@@ -24,6 +24,7 @@ const ProfilePage = () => {
   const [name, setName] = useState("");
   const [count, setCount] = useState(0);
   const [processing, setProcessing] = useState(false);
+  const [updating, setUpdating] = useState(false)
 
 
   useEffect(() => {
@@ -45,19 +46,23 @@ const ProfilePage = () => {
   type ofstateSetter = Dispatch<string>
   const Update_Blog = async (event: FormEvent, _id: string, blog: ofBlog, setClassName: ofstateSetter) => {
     event.preventDefault();
+    setUpdating(true)
     const API = UPDATE_BLOG_API + _id;
     console.log(API);
     await axios
       .put(API, blog)
       .then((res) => {
         if (res.status === 200) {
-          console.log(res);
+          setUpdating(false)
           setClassName("hidden");
           toast.success("Successful")
           setCount(old => old + 1)
         }
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        setUpdating(false)
+        console.log(err)
+      });
   };
   const DeleteBlog = async (id: string) => {
     const API = DeleteBlog_API + id;
@@ -84,7 +89,7 @@ const ProfilePage = () => {
             .catch((err) => console.log(err));
         };
         GetUserName();
-        duration=duration - 100
+        duration = duration - 100
         return (
           <ProfileBlog
             key={_id}
@@ -96,6 +101,7 @@ const ProfilePage = () => {
             userName={name}
             duration={duration}
             Update_Blog={Update_Blog}
+            processing={updating}
           />
         );
       })

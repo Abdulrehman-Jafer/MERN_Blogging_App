@@ -5,10 +5,10 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import MY_NAV from "./components/MyNav";
 import { ofuserInfo } from "../Context/ContextTypes";
-import { FormEvent,ChangeEvent } from "react";
+import { FormEvent, ChangeEvent } from "react";
 import { toast } from "react-toastify";
 
-const Create_Blog = ({ userInfo }:{userInfo:ofuserInfo}) => {
+const Create_Blog = ({ userInfo }: { userInfo: ofuserInfo }) => {
   const { userId, name } = userInfo;
   const [newBlog, setNewBlog] = useState({
     title: "",
@@ -16,13 +16,16 @@ const Create_Blog = ({ userInfo }:{userInfo:ofuserInfo}) => {
     user: userId,
     userName: name,
   });
+  const [processing, setProcessing] = useState(false)
   const navigate = useNavigate();
-  const Create = async (event:FormEvent) => {
+  const Create = async (event: FormEvent) => {
     event.preventDefault();
+    setProcessing(true)
     await axios
       .post(CREATE_BLOG, newBlog)
       .then((res) => {
         if (res.status === 200) {
+          setProcessing(false)
           setNewBlog({
             title: "",
             description: "",
@@ -33,13 +36,16 @@ const Create_Blog = ({ userInfo }:{userInfo:ofuserInfo}) => {
           navigate("/explore");
         }
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        setProcessing(false)
+        console.log(err)
+      })
   };
 
   const inputRef = useRef<HTMLInputElement>(null)
-  useEffect(()=>{
-   inputRef.current?.focus()
-  },[])
+  useEffect(() => {
+    inputRef.current?.focus()
+  }, [])
   return (
     <>
       <MY_NAV />
@@ -66,7 +72,7 @@ const Create_Blog = ({ userInfo }:{userInfo:ofuserInfo}) => {
               cols={30}
               rows={10}
               value={newBlog.description}
-              onChange={(event:ChangeEvent) => onChangeHandler(event, setNewBlog)}
+              onChange={(event: ChangeEvent) => onChangeHandler(event, setNewBlog)}
               placeholder="Description"
               spellCheck={"false"}
               className="indent-[1rem] py-[0.7rem] rounded-[0.3rem] outline-blue-400 border-none text-[1.2rem] bg-slate-200 h-[250px] w-[100%]"
@@ -74,9 +80,14 @@ const Create_Blog = ({ userInfo }:{userInfo:ofuserInfo}) => {
             ></textarea>
             <button
               type="submit"
-              className="self-end text-[2rem] border-none bg-blue-400 p-1 rounded-md hover:bg-blue-500"
+              className="self-end text-[2rem] sm:w-[180px] min-h-[60px] border-none bg-blue-400 p-1 rounded-md hover:bg-blue-500"
+              disabled={processing}
             >
-              Create
+              {!processing ? "Create" : (
+                <div className="flex justify-center items-center w-[100%] h-[100%]">
+                  <div className="loader"></div>
+                </div>)
+              }
             </button>
           </form>
         </div>

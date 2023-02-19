@@ -1,4 +1,4 @@
-import React, { useEffect,Dispatch ,FormEvent} from "react";
+import React, { useEffect, Dispatch, FormEvent } from "react";
 import { useState } from "react";
 import { RiDeleteBinLine } from "react-icons/ri";
 import { FiEdit } from "react-icons/fi";
@@ -17,14 +17,15 @@ export type ofBlog = {
 }
 
 type ofProfileBlog = {
-  _id : string,
-  upperCasedTitle : string,
-  DeleteBlog : (_id:string)=>Promise<void>,
-  date : string,
-  description:string,
-  userName:string,
-  duration:number,
-  Update_Blog : (event:FormEvent, _id: string, blog: ofBlog, setClassName: React.Dispatch<string>) => Promise<void>
+  _id: string,
+  upperCasedTitle: string,
+  DeleteBlog: (_id: string) => Promise<void>,
+  date: string,
+  description: string,
+  userName: string,
+  duration: number,
+  Update_Blog: (event: FormEvent, _id: string, blog: ofBlog, setClassName: React.Dispatch<string>) => Promise<void>,
+  processing: boolean
 }
 
 const ProfileBlog = ({
@@ -35,8 +36,9 @@ const ProfileBlog = ({
   description,
   userName,
   duration,
-  Update_Blog
-}:ofProfileBlog) => {
+  Update_Blog,
+  processing
+}: ofProfileBlog) => {
   const [className, setClassName] = useState("hidden");
 
   const { logIn } = useContext(AuthContext);
@@ -85,7 +87,7 @@ const ProfileBlog = ({
         <form
           autoComplete="off"
           className="flex flex-col gap-[1.6rem] my-[2rem]"
-          onSubmit={(event) => Update_Blog(event,_id,blog,setClassName)}
+          onSubmit={(event) => Update_Blog(event, _id, blog, setClassName)}
         >
           <input
             type="text"
@@ -94,7 +96,7 @@ const ProfileBlog = ({
             ref={inputRef}
             value={blog.title}
             onChange={(event) => {
-            onChangeHandler(event, setBlog);
+              onChangeHandler(event, setBlog);
             }}
             className="indent-[1rem] py-[0.7rem] rounded-[0.3rem] outline-blue-400 border-none text-[1.2rem] bg-slate-200 font-bold"
             required
@@ -111,29 +113,34 @@ const ProfileBlog = ({
             className="indent-[1rem] py-[0.7rem] rounded-[0.3rem] outline-blue-400 border-none text-[1.2rem] bg-slate-200"
             required
           ></textarea>
-          <div className="flex justify-end gap-[1rem]"> 
-          <span
-            className="self-end text-[1.3rem] text-slate-700 border-none cursor-default bg-blue-200 p-1 rounded-md hover:bg-blue-300"
-            onClick={(event)=>{
+          <div className="flex justify-end gap-[1rem]">
+            <span
+              className="self-end text-[1.3rem] text-slate-700 border-none cursor-default bg-blue-200 p-1 rounded-md hover:bg-blue-300"
+              onClick={(event) => {
                 event.stopPropagation()
                 setClassName("hidden")
                 setBlog({
-                    title: upperCasedTitle,
-                    description: description,
-                    user: userId,
-                    userName: name,
-                  })
+                  title: upperCasedTitle,
+                  description: description,
+                  user: userId,
+                  userName: name,
+                })
 
-            }}
-          >
-            Cancel
-          </span>
-          <button
-            type="submit"
-            className="self-end text-[1.3rem] text-slate-700 border-none bg-blue-400 p-1 rounded-md hover:bg-blue-500"
-          >
-            Update
-          </button>
+              }}
+            >
+              Cancel
+            </span>
+            <button
+              type="submit"
+              disabled={processing}
+              className="self-end text-[1.3rem] text-slate-700 border-none bg-blue-400 p-1 rounded-md hover:bg-blue-500"
+            >
+              {!processing ? "Update" : (
+                <div className="flex justify-center items-center min-w-[47px] min-h-[30px]">
+                  <div className="loader"></div>
+                </div>)
+              }
+            </button>
           </div>
         </form>
       </section>
