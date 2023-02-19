@@ -18,8 +18,8 @@ const MY_NAV = () => {
 
   return (
     <main className="min-h-[50px] w-[100%] bg-slate-500 text-slate-300 pr-[3rem]">
-      <div className="flex justify-between items-center p-[0.5rem]">
-        <div className="flex gap-[3rem] justify-center flex-1">
+      <section className="flex justify-between items-center p-[0.5rem]">
+        <div className="flex sm:gap-[3rem] gap-[1rem] justify-center flex-1">
           <Link to={"/profile"}>
             <h3
               className={`${
@@ -79,7 +79,7 @@ const MY_NAV = () => {
             </div>
           </div>
         </div>
-      </div>
+      </section>
     </main>
   );
 };

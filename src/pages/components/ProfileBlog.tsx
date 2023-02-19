@@ -83,10 +83,10 @@ const ProfileBlog = ({
           <span className="font-semibold text-slate-400 bg-slate-200 rounded-sm p-[0.1rem]">{`by ${userName}`}</span>
         </small>
       </div>
-      <section className={`${className}`}>
+      <section className={`${className} `}>
         <form
           autoComplete="off"
-          className="flex flex-col gap-[1.6rem] my-[2rem]"
+          className="flex flex-col gap-[1.6rem]"
           onSubmit={(event) => Update_Blog(event, _id, blog, setClassName)}
         >
           <input
@@ -110,10 +110,10 @@ const ProfileBlog = ({
             placeholder="Description"
             spellCheck={"false"}
             tabIndex={0}
-            className="indent-[1rem] py-[0.7rem] rounded-[0.3rem] outline-blue-400 border-none text-[1.2rem] bg-slate-200"
+            className="indent-[1rem] py-[0.7rem] rounded-[0.3rem] outline-blue-400 border-none text-[1.2rem] bg-slate-200 p-3"
             required
           ></textarea>
-          <div className="flex justify-end gap-[1rem]">
+          <div className="flex justify-end gap-[1rem] px-2">
             <span
               className="self-end text-[1.3rem] text-slate-700 border-none cursor-default bg-blue-200 p-1 rounded-md hover:bg-blue-300"
               onClick={(event) => {

@@ -23,7 +23,7 @@ const LoginPage = () => {
   return (
     <>
       {/* <MyToast /> */}
-      <main className="bg-slate-400 h-[100vh] flex items-center w-[100%]" >
+      <main className="bg-slate-400 h-[100vh] flex items-center w-[100%] px-[1rem]" >
         <section className="mx-auto text-gray-700 w-[100%] max-w-[600px]" style={style}>
           <div className="w-[100%]">
             <div className="flex flex-col flex-1 justify-center bg-slate-300 p-[1rem] py-[5rem] rounded-[0.5rem]">

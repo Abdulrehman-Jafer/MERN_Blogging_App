@@ -49,7 +49,7 @@ const Create_Blog = ({ userInfo }: { userInfo: ofuserInfo }) => {
   return (
     <>
       <MY_NAV />
-      <main className="max-w-[1200px] mx-auto transformY100rem">
+      <main className="max-w-[1200px] mx-auto transformY100rem px-1">
         <div className="text-blue-500">
           <h1>Create Your Post Here</h1>
           <form
@@ -75,12 +75,12 @@ const Create_Blog = ({ userInfo }: { userInfo: ofuserInfo }) => {
               onChange={(event: ChangeEvent) => onChangeHandler(event, setNewBlog)}
               placeholder="Description"
               spellCheck={"false"}
-              className="indent-[1rem] py-[0.7rem] rounded-[0.3rem] outline-blue-400 border-none text-[1.2rem] bg-slate-200 h-[250px] w-[100%]"
+              className="indent-[1rem] py-[0.7rem] rounded-[0.3rem] outline-blue-400 border-none text-[1.2rem] bg-slate-200 h-[250px] w-[100%] px-2" 
               required
             ></textarea>
             <button
               type="submit"
-              className="self-end text-[2rem] sm:w-[180px] min-h-[60px] border-none bg-blue-400 p-1 rounded-md hover:bg-blue-500"
+              className="self-end text-[2rem] sm:w-[180px] min-h-[60px] border-none bg-blue-400 p-1 rounded-md hover:bg-blue-500 mr-[0.1rem]"
               disabled={processing}
             >
               {!processing ? "Create" : (

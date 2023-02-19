@@ -30,7 +30,7 @@ const SignUpForm = () => {
 
 
   return (
-    <main className="bg-slate-400 h-[100vh] flex items-center">
+    <main className="bg-slate-400 h-[100vh] flex items-center px-[1rem]">
       <main className="lg:w-[600px] md:[400px] sm:[200px] mx-auto text-gray-700" style={style}>
         <main className="flex flex-col gap-[1rem] justify-center bg-slate-300 p-[1rem] rounded-[0.5rem] py-[2rem]">
           <section className=" text-[2rem] font-semibold text-center">
