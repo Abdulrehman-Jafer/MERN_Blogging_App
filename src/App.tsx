@@ -7,6 +7,7 @@ import { AuthContext } from "./Context/AuthContext";
 import Explore from "./pages/Explore";
 import Create_Blog from "./pages/Create_Blog";
 import MyToast from "./Globals/MyToast";
+import { useLocation } from "react-router-dom";
 
 
 const App = () => {
@@ -14,6 +15,12 @@ const App = () => {
   const { logIn } = useContext(AuthContext);
   const { userInfo } = logIn;
   const { userId } = userInfo
+
+  const {pathname} = useLocation()
+  useEffect(()=>{
+    window.scroll(0,0)
+  },[pathname])
+  
   useEffect(() => {
     if (userId) {
       navigate("/profile")
