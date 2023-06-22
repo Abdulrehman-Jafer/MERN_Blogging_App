@@ -1,14 +1,14 @@
 import { ChangeEvent, Dispatch } from "react";
 
 // const hostingSiteUrl = "https://myexpressapi.onrender.com";
-export const LOGIN_URL_API = `https://myexpressapi.onrender.com/api/user/login`;
-export const SIGN_UP_URL_API = `https://myexpressapi.onrender.com/api/user/signup`;
-export const GET_ALL_BLOGS = `https://myexpressapi.onrender.com/api/blog/`;
-export const CREATE_BLOG = `https://myexpressapi.onrender.com/api/blog/add/`;
-export const USER_BY_ID = `https://myexpressapi.onrender.com/api/user/`;
-export const userBlogs_API = `https://myexpressapi.onrender.com/api/blog/user/`;
-export const DeleteBlog_API = `https://myexpressapi.onrender.com/api/blog/`;
-export const UPDATE_BLOG_API = `https://myexpressapi.onrender.com/api/blog/update/`;
+export const LOGIN_URL_API = `https://blogging-app-backend.vercel.app/api/user/login`;
+export const SIGN_UP_URL_API = `https://blogging-app-backend.vercel.app/api/user/signup`;
+export const GET_ALL_BLOGS = `https://blogging-app-backend.vercel.app/api/blog/`;
+export const CREATE_BLOG = `https://blogging-app-backend.vercel.app/api/blog/add/`;
+export const USER_BY_ID = `https://blogging-app-backend.vercel.app/api/user/`;
+export const userBlogs_API = `https://blogging-app-backend.vercel.app/api/blog/user/`;
+export const DeleteBlog_API = `https://blogging-app-backend.vercel.app/api/blog/`;
+export const UPDATE_BLOG_API = `https://blogging-app-backend.vercel.app/api/blog/update/`;
 import { RefObject } from "react";
 export const style = {
   animation: `transformX100rem 300ms linear`,
